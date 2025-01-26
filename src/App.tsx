@@ -15,6 +15,13 @@ const App = () => (
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Index />} />
+          <Route path="/about" element={<Index />} />
+          <Route path="/manage-school" element={<Index />} />
+          <Route path="/manage-student" element={<Index />} />
+          <Route path="/manage-staff" element={<Index />} />
+          <Route path="/online-training" element={<Index />} />
+          <Route path="/curriculum" element={<Index />} />
+          <Route path="/parent-portal" element={<Index />} />
         </Routes>
       </BrowserRouter>
     </TooltipProvider>
