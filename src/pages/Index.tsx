@@ -16,12 +16,6 @@ const Index = () => {
                 alt="Education Portal"
                 className="w-full h-full object-cover"
               />
-              <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black/60 to-transparent text-white">
-                <h2 className="text-3xl font-bold mb-2">COMMENT ÇA MARCHE</h2>
-                <p className="text-lg">
-                  Découvrez notre plateforme intuitive de gestion scolaire
-                </p>
-              </div>
             </div>
           </div>
         </div>
