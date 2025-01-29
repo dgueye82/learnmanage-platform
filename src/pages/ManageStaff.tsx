@@ -1,6 +1,6 @@
 import { Layout } from "@/components/Layout";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { User, FileText, Calendar, Clock, BookOpen, Users, ChartBar, Activity } from "lucide-react";
+import { User, FileText, Calendar, Clock, BookOpen, Users, ChartBar, Activity, UserCheck } from "lucide-react";
 
 const ManageStaff = () => {
   const modules = [
