@@ -13,7 +13,7 @@ import {
   Video,
   Clock,
   Award,
-  DeviceTablet,
+  Tablet,
   Bell,
   BarChart,
   Video as VideoIcon,
@@ -46,7 +46,7 @@ const features = [
     description: "Alertes pour les tâches et cours à venir",
   },
   {
-    icon: DeviceTablet,
+    icon: Tablet,
     title: "Accès multi-appareils",
     description: "Compatible ordinateur, tablette, téléphone",
   },
