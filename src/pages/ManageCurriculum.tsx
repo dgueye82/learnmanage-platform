@@ -76,15 +76,15 @@ const ManageCurriculum = () => {
             <Card key={index} className="hover:shadow-lg transition-shadow">
               <CardHeader>
                 <div className="flex items-center gap-3">
-                  <div className="p-2 bg-terangablue-50 rounded-lg">
-                    <module.icon className="w-6 h-6 text-terangablue-500" />
+                  <div className="p-2 bg-blue-50 rounded-lg">
+                    <module.icon className="w-6 h-6 text-blue-500" />
                   </div>
                   <CardTitle className="text-xl">{module.title}</CardTitle>
                 </div>
                 <CardDescription>{module.description}</CardDescription>
               </CardHeader>
               <CardContent>
-                <button className="w-full py-2 px-4 bg-terangablue-500 text-white rounded-lg hover:bg-terangablue-600 transition-colors">
+                <button className="w-full py-2 px-4 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors">
                   Accéder
                 </button>
               </CardContent>
