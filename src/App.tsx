@@ -26,7 +26,7 @@ const App = () => (
           <Route path="/manage-staff" element={<ManageStaff />} />
           <Route path="/manage-curriculum" element={<ManageCurriculum />} />
           <Route path="/online-training" element={<OnlineTraining />} />
-          <Route path="/curriculum" element={<Index />} />
+          <Route path="/curriculum" element={<ManageCurriculum />} />
           <Route path="/parent-portal" element={<Index />} />
         </Routes>
       </BrowserRouter>
