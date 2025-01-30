@@ -35,32 +35,34 @@ const features = [
   },
 ];
 
-export default function ParentPortal() {
+const ParentPortal = () => {
   return (
     <Layout>
       <div className="container py-8">
         <div className="mb-8">
-          <h1 className="text-3xl font-bold text-gray-900">Portail parents</h1>
-          <p className="mt-2 text-lg text-gray-600">
-            Ce module est conçu pour permettre aux parents de rester connectés à la vie scolaire de leurs enfants, où qu'ils soient et en tout temps.
+          <h1 className="text-3xl font-bold text-gray-900 mb-2">Portail parents</h1>
+          <p className="text-gray-600">
+            Ce module est conçu pour permettre aux parents de rester connectés à la vie scolaire de leurs enfants, 
+            où qu'ils soient et en tout temps.
           </p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {features.map((feature) => (
-            <Card key={feature.title} className="hover:shadow-lg transition-shadow">
+          {features.map((module) => (
+            <Card key={module.title} className="hover:shadow-lg transition-shadow">
               <CardHeader>
-                <div className="flex items-center gap-4">
+                <div className="flex items-center gap-3">
                   <div className="p-2 bg-terangablue-50 rounded-lg">
-                    <feature.icon className="w-6 h-6 text-terangablue-500" />
+                    <module.icon className="w-6 h-6 text-terangablue-500" />
                   </div>
-                  <CardTitle className="text-xl">{feature.title}</CardTitle>
+                  <CardTitle className="text-xl">{module.title}</CardTitle>
                 </div>
+                <CardDescription>{module.description}</CardDescription>
               </CardHeader>
               <CardContent>
-                <CardDescription className="text-base">
-                  {feature.description}
-                </CardDescription>
+                <button className="w-full py-2 px-4 bg-terangablue-500 text-white rounded-lg hover:bg-terangablue-600 transition-colors">
+                  Accéder
+                </button>
               </CardContent>
             </Card>
           ))}
@@ -68,4 +70,6 @@ export default function ParentPortal() {
       </div>
     </Layout>
   );
-}
+};
+
+export default ParentPortal;
