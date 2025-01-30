@@ -9,6 +9,7 @@ import ManageStudent from "./pages/ManageStudent";
 import ManageStaff from "./pages/ManageStaff";
 import ManageCurriculum from "./pages/ManageCurriculum";
 import OnlineTraining from "./pages/OnlineTraining";
+import ParentPortal from "./pages/ParentPortal";
 
 const queryClient = new QueryClient();
 
@@ -27,7 +28,7 @@ const App = () => (
           <Route path="/manage-curriculum" element={<ManageCurriculum />} />
           <Route path="/online-training" element={<OnlineTraining />} />
           <Route path="/curriculum" element={<ManageCurriculum />} />
-          <Route path="/parent-portal" element={<Index />} />
+          <Route path="/parent-portal" element={<ParentPortal />} />
         </Routes>
       </BrowserRouter>
     </TooltipProvider>
