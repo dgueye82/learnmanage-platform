@@ -10,6 +10,7 @@ import ManageStaff from "./pages/ManageStaff";
 import ManageCurriculum from "./pages/ManageCurriculum";
 import OnlineTraining from "./pages/OnlineTraining";
 import ParentPortal from "./pages/ParentPortal";
+import SchoolRegistration from "./pages/SchoolRegistration";
 
 const queryClient = new QueryClient();
 
@@ -29,6 +30,7 @@ const App = () => (
           <Route path="/online-training" element={<OnlineTraining />} />
           <Route path="/curriculum" element={<ManageCurriculum />} />
           <Route path="/parent-portal" element={<ParentPortal />} />
+          <Route path="/school-registration" element={<SchoolRegistration />} />
         </Routes>
       </BrowserRouter>
     </TooltipProvider>
