@@ -33,11 +33,16 @@ const SchoolRegistration = () => {
     },
   });
 
-  const onSubmit = async (data: SchoolFormValues) => {
+  const onSubmit = async (values: SchoolFormValues) => {
     try {
       const { error } = await supabase
         .from("schools")
-        .insert(data); // Passing data directly instead of wrapping it in an array
+        .insert({
+          name: values.name, // Assurons-nous que name est toujours présent
+          address: values.address,
+          phone: values.phone,
+          email: values.email,
+        });
 
       if (error) throw error;
 
