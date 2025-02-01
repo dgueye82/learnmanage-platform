@@ -37,7 +37,7 @@ const SchoolRegistration = () => {
     try {
       const { error } = await supabase
         .from("schools")
-        .insert([data]);
+        .insert(data); // Passing data directly instead of wrapping it in an array
 
       if (error) throw error;
 
