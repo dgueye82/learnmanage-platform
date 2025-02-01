@@ -1,4 +1,5 @@
 import { TerangaSidebar } from "./TerangaSidebar";
+import { SchoolProvider } from "@/contexts/SchoolContext";
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -6,11 +7,13 @@ interface LayoutProps {
 
 export function Layout({ children }: LayoutProps) {
   return (
-    <div className="min-h-screen bg-gray-50">
-      <TerangaSidebar />
-      <main className="pl-64">
-        {children}
-      </main>
-    </div>
+    <SchoolProvider>
+      <div className="min-h-screen bg-gray-50">
+        <TerangaSidebar />
+        <main className="pl-64">
+          {children}
+        </main>
+      </div>
+    </SchoolProvider>
   );
 }
