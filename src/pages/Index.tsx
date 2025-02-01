@@ -1,9 +1,24 @@
 import { Layout } from "@/components/Layout";
 import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { LogIn } from "lucide-react";
 import { Link } from "react-router-dom";
+import { useQuery } from "@tanstack/react-query";
+import { supabase } from "@/lib/supabase";
 
 const Index = () => {
+  const { data: schools, isLoading } = useQuery({
+    queryKey: ['schools'],
+    queryFn: async () => {
+      const { data, error } = await supabase
+        .from('schools')
+        .select('*');
+      
+      if (error) throw error;
+      return data;
+    }
+  });
+
   return (
     <Layout>
       <div className="min-h-screen p-8">
@@ -21,6 +36,27 @@ const Index = () => {
             <p className="text-xl text-gray-600 mb-8">
               Votre portail numérique centralisé pour la gestion scolaire au Sénégal
             </p>
+
+            {/* Liste des écoles */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+              {isLoading ? (
+                <p>Chargement des écoles...</p>
+              ) : (
+                schools?.map((school) => (
+                  <Card key={school.id}>
+                    <CardHeader>
+                      <CardTitle>{school.name}</CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                      <p className="text-gray-600">{school.address}</p>
+                      <p className="text-gray-600">{school.phone}</p>
+                      <p className="text-gray-600">{school.email}</p>
+                    </CardContent>
+                  </Card>
+                ))
+              )}
+            </div>
+
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               <div className="p-6 bg-blue-50 rounded-xl">
                 <h2 className="text-xl font-semibold text-blue-900 mb-2">Gestion des Écoles</h2>
