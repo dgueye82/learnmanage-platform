@@ -4,7 +4,6 @@ import { School, CalendarDays, BookOpen, ClipboardCheck, Users, GraduationCap, U
 import { useQuery } from "@tanstack/react-query";
 import { supabase } from "@/lib/supabase";
 import { useSchool } from "@/contexts/SchoolContext";
-import { Button } from "@/components/ui/button";
 
 const ManageSchool = () => {
   const { data: schools, isLoading } = useQuery({
@@ -61,14 +60,13 @@ const ManageSchool = () => {
 
   return (
     <Layout>
-      <div className="container py-8">
-        <div className="mb-8">
-          <h1 className="text-3xl font-bold text-gray-900 mb-4">Gestion de l'École</h1>
-          
-          {/* Sélection de l'école */}
-          <div className="mb-8">
-            <h2 className="text-xl font-semibold mb-4">Sélectionnez une école</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+      <div className="min-h-screen p-8">
+        <div className="max-w-6xl mx-auto">
+          <div className="bg-white rounded-2xl shadow-sm p-8 mb-8">
+            <h1 className="text-4xl font-bold text-gray-900 mb-8">Gestion de l'École</h1>
+            
+            {/* Liste des écoles */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
               {isLoading ? (
                 <p>Chargement des écoles...</p>
               ) : (
@@ -76,7 +74,7 @@ const ManageSchool = () => {
                   <Card 
                     key={school.id}
                     className={`cursor-pointer transition-all ${
-                      selectedSchool?.id === school.id ? 'ring-2 ring-terangablue-500' : ''
+                      selectedSchool?.id === school.id ? 'ring-2 ring-blue-500' : ''
                     }`}
                     onClick={() => setSelectedSchool(school)}
                   >
@@ -92,39 +90,31 @@ const ManageSchool = () => {
                 ))
               )}
             </div>
-          </div>
 
-          {selectedSchool && (
-            <>
-              <p className="text-gray-600 mb-8">
-                École sélectionnée : <span className="font-semibold">{selectedSchool.name}</span>
-              </p>
+            {selectedSchool && (
+              <>
+                <p className="text-xl text-gray-600 mb-8">
+                  École sélectionnée : <span className="font-semibold">{selectedSchool.name}</span>
+                </p>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {modules.map((module, index) => (
-                  <Card key={index} className="hover:shadow-lg transition-shadow">
-                    <CardHeader>
-                      <div className="flex items-center gap-3">
-                        <div className="p-2 bg-terangablue-50 rounded-lg">
-                          <module.icon className="w-6 h-6 text-terangablue-500" />
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                  {modules.map((module, index) => (
+                    <Card key={index} className="hover:shadow-lg transition-shadow">
+                      <CardHeader>
+                        <div className="flex items-center gap-3">
+                          <div className="p-2 bg-blue-50 rounded-lg">
+                            <module.icon className="w-6 h-6 text-blue-500" />
+                          </div>
+                          <CardTitle className="text-xl">{module.title}</CardTitle>
                         </div>
-                        <CardTitle className="text-xl">{module.title}</CardTitle>
-                      </div>
-                      <CardDescription>{module.description}</CardDescription>
-                    </CardHeader>
-                    <CardContent>
-                      <Button 
-                        className="w-full"
-                        variant="default"
-                      >
-                        Accéder
-                      </Button>
-                    </CardContent>
-                  </Card>
-                ))}
-              </div>
-            </>
-          )}
+                        <CardDescription>{module.description}</CardDescription>
+                      </CardHeader>
+                    </Card>
+                  ))}
+                </div>
+              </>
+            )}
+          </div>
         </div>
       </div>
     </Layout>
