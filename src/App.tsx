@@ -4,7 +4,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { SchoolProvider } from "@/contexts/SchoolContext";
-import Index from "./pages/Index";
+import Dashboard from "./pages/Dashboard";
 import Auth from "./pages/Auth";
 import ManageSchool from "./pages/ManageSchool";
 import ManageStudent from "./pages/ManageStudent";
@@ -30,9 +30,8 @@ const App = () => (
         <Sonner />
         <BrowserRouter>
           <Routes>
-            <Route path="/" element={<Index />} />
+            <Route path="/" element={<Dashboard />} />
             <Route path="/auth" element={<Auth />} />
-            <Route path="/about" element={<Index />} />
             <Route path="/manage-school" element={<ManageSchool />} />
             <Route path="/manage-student" element={<ManageStudent />} />
             <Route path="/manage-staff" element={<ManageStaff />} />

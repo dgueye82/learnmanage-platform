@@ -1,11 +1,11 @@
-import { School, User, Users, BookOpen, GraduationCap, Heart } from "lucide-react";
+import { Home, School, User, Users, BookOpen, GraduationCap, Heart } from "lucide-react";
 import { Link } from "react-router-dom";
 
 const menuItems = [
   {
-    title: "À propos",
-    icon: Heart,
-    path: "/about",
+    title: "Accueil",
+    icon: Home,
+    path: "/",
   },
   {
     title: "Gérer l'école",
