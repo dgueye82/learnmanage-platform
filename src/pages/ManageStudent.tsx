@@ -23,12 +23,14 @@ const ManageStudent = () => {
         totalAttendance: attendanceCount.count || 0
       };
     },
-    onError: () => {
-      toast({
-        title: "Erreur",
-        description: "Impossible de charger les statistiques",
-        variant: "destructive"
-      });
+    meta: {
+      onError: () => {
+        toast({
+          title: "Erreur",
+          description: "Impossible de charger les statistiques",
+          variant: "destructive"
+        });
+      }
     }
   });
 
