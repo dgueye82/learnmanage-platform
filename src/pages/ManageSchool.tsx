@@ -4,8 +4,13 @@ import { School, CalendarDays, BookOpen, ClipboardCheck, Users, GraduationCap, U
 import { useQuery } from "@tanstack/react-query";
 import { supabase } from "@/lib/supabase";
 import { useSchool } from "@/contexts/SchoolContext";
+import { useNavigate } from "react-router-dom";
+import { useToast } from "@/components/ui/use-toast";
 
 const ManageSchool = () => {
+  const navigate = useNavigate();
+  const { toast } = useToast();
+  
   const { data: schools, isLoading } = useQuery({
     queryKey: ['schools'],
     queryFn: async () => {
@@ -25,38 +30,51 @@ const ManageSchool = () => {
       title: "Profil de l'école",
       description: "Gérer les informations et le profil de l'établissement",
       icon: School,
+      path: "/school/profile"
     },
     {
       title: "Notes et Classes",
       description: "Gestion des notes et organisation des classes",
       icon: ClipboardCheck,
+      path: "/school/grades-classes"
     },
     {
       title: "Calendrier Scolaire",
       description: "Planification et gestion du calendrier académique",
       icon: CalendarDays,
+      path: "/school/calendar"
     },
     {
       title: "Cycles et Trimestres",
       description: "Organisation des périodes scolaires",
       icon: GraduationCap,
+      path: "/school/cycles-terms"
     },
     {
       title: "Matières Scolaires",
       description: "Gestion du programme et des matières enseignées",
       icon: BookOpen,
+      path: "/school/subjects"
     },
     {
       title: "Présence",
       description: "Suivi des présences des élèves et du personnel",
       icon: UserCheck,
-    },
-    {
-      title: "Gestion des Parents",
-      description: "Communication et suivi avec les parents d'élèves",
-      icon: Users,
+      path: "/school/attendance"
     },
   ];
+
+  const handleModuleAccess = (path: string) => {
+    if (!selectedSchool) {
+      toast({
+        title: "Sélection requise",
+        description: "Veuillez d'abord sélectionner une école",
+        variant: "destructive",
+      });
+      return;
+    }
+    navigate(path);
+  };
 
   return (
     <Layout>
@@ -69,7 +87,6 @@ const ManageSchool = () => {
           </p>
         </div>
 
-        {/* Liste des écoles */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
           {isLoading ? (
             <p>Chargement des écoles...</p>
@@ -109,7 +126,10 @@ const ManageSchool = () => {
                   <CardDescription>{module.description}</CardDescription>
                 </CardHeader>
                 <CardContent>
-                  <button className="w-full py-2 px-4 bg-terangablue-500 text-white rounded-lg hover:bg-terangablue-600 transition-colors">
+                  <button 
+                    className="w-full py-2 px-4 bg-terangablue-500 text-white rounded-lg hover:bg-terangablue-600 transition-colors"
+                    onClick={() => handleModuleAccess(module.path)}
+                  >
                     Accéder
                   </button>
                 </CardContent>

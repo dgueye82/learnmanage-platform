@@ -13,6 +13,12 @@ import ManageCurriculum from "./pages/ManageCurriculum";
 import OnlineTraining from "./pages/OnlineTraining";
 import ParentPortal from "./pages/ParentPortal";
 import SchoolRegistration from "./pages/SchoolRegistration";
+import SchoolProfile from "./pages/school/SchoolProfile";
+import GradesAndClasses from "./pages/school/GradesAndClasses";
+import SchoolCalendar from "./pages/school/SchoolCalendar";
+import CyclesAndTerms from "./pages/school/CyclesAndTerms";
+import SchoolSubjects from "./pages/school/SchoolSubjects";
+import Attendance from "./pages/school/Attendance";
 
 const queryClient = new QueryClient();
 
@@ -35,6 +41,12 @@ const App = () => (
             <Route path="/curriculum" element={<ManageCurriculum />} />
             <Route path="/parent-portal" element={<ParentPortal />} />
             <Route path="/school-registration" element={<SchoolRegistration />} />
+            <Route path="/school/profile" element={<SchoolProfile />} />
+            <Route path="/school/grades-classes" element={<GradesAndClasses />} />
+            <Route path="/school/calendar" element={<SchoolCalendar />} />
+            <Route path="/school/cycles-terms" element={<CyclesAndTerms />} />
+            <Route path="/school/subjects" element={<SchoolSubjects />} />
+            <Route path="/school/attendance" element={<Attendance />} />
           </Routes>
         </BrowserRouter>
       </SchoolProvider>
