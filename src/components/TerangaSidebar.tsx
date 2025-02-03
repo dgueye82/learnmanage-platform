@@ -1,7 +1,8 @@
-import { Home, School, User, Users, BookOpen, GraduationCap, Heart } from "lucide-react";
+import { Home, School, User, Users, BookOpen, GraduationCap } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
+import { useStudent } from "@/contexts/StudentContext";
 
-const menuItems = [
+const getMenuItems = (studentId: string | null) => [
   {
     title: "Accueil",
     icon: Home,
@@ -16,48 +17,48 @@ const menuItems = [
     title: "Gérer l'élève",
     icon: User,
     path: "/manage-student",
-    subItems: [
+    subItems: studentId ? [
       {
         title: "Profil",
-        path: "/student/profile",
+        path: `/student/${studentId}/profile`,
       },
       {
         title: "Académique",
-        path: "/student/academic",
+        path: `/student/${studentId}/academic`,
       },
       {
         title: "Progrès",
-        path: "/student/progress",
+        path: `/student/${studentId}/progress`,
       },
       {
         title: "Présence",
-        path: "/student/attendance",
+        path: `/student/${studentId}/attendance`,
       },
       {
         title: "Mérites",
-        path: "/student/merits",
+        path: `/student/${studentId}/merits`,
       },
       {
         title: "Programme",
-        path: "/student/program",
+        path: `/student/${studentId}/program`,
       },
       {
         title: "École",
-        path: "/student/school",
+        path: `/student/${studentId}/school`,
       },
       {
         title: "Activités",
-        path: "/student/activities",
+        path: `/student/${studentId}/activities`,
       },
       {
         title: "Mentor",
-        path: "/student/mentor",
+        path: `/student/${studentId}/mentor`,
       },
       {
         title: "Détentions",
-        path: "/student/detentions",
+        path: `/student/${studentId}/detentions`,
       },
-    ],
+    ] : [],
   },
   {
     title: "Gérer le personnel",
@@ -83,8 +84,11 @@ const menuItems = [
 
 export function TerangaSidebar() {
   const location = useLocation();
-  const isStudentRoute = location.pathname.startsWith('/student/');
+  const { selectedStudentId } = useStudent();
+  const isStudentRoute = location.pathname.includes('/student/');
   const isManageStudentRoute = location.pathname === '/manage-student';
+  
+  const menuItems = getMenuItems(selectedStudentId);
 
   return (
     <div className="min-h-screen w-64 bg-terangablue-50 border-r border-terangablue-100 p-4 fixed left-0 top-0">
