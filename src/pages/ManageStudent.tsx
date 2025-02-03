@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
 import { supabase } from "@/lib/supabase";
 import { StudentForm } from "@/components/student/StudentForm";
+import { useNavigate } from "react-router-dom";
 import {
   Dialog,
   DialogContent,
@@ -45,6 +46,7 @@ const ManageStudent = () => {
   const [isAddingStudent, setIsAddingStudent] = useState(false);
   const [isEditingStudent, setIsEditingStudent] = useState(false);
   const { toast } = useToast();
+  const navigate = useNavigate();
 
   const fetchStudents = async () => {
     try {
@@ -94,6 +96,10 @@ const ManageStudent = () => {
     }
   };
 
+  const handleStudentClick = (student: Student) => {
+    navigate(`/student/profile?id=${student.id}`);
+  };
+
   return (
     <Layout>
       <div className="container py-8">
@@ -131,7 +137,11 @@ const ManageStudent = () => {
               </TableHeader>
               <TableBody>
                 {students.map((student) => (
-                  <TableRow key={student.id}>
+                  <TableRow 
+                    key={student.id} 
+                    className="cursor-pointer hover:bg-gray-50"
+                    onClick={() => handleStudentClick(student)}
+                  >
                     <TableCell>{student.last_name}</TableCell>
                     <TableCell>{student.first_name}</TableCell>
                     <TableCell>
@@ -150,7 +160,10 @@ const ManageStudent = () => {
                         <DialogTrigger asChild>
                           <Button
                             variant="outline"
-                            onClick={() => setSelectedStudent(student)}
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              setSelectedStudent(student);
+                            }}
                           >
                             Modifier
                           </Button>
@@ -170,7 +183,12 @@ const ManageStudent = () => {
 
                       <AlertDialog>
                         <AlertDialogTrigger asChild>
-                          <Button variant="destructive">Supprimer</Button>
+                          <Button 
+                            variant="destructive"
+                            onClick={(e) => e.stopPropagation()}
+                          >
+                            Supprimer
+                          </Button>
                         </AlertDialogTrigger>
                         <AlertDialogContent>
                           <AlertDialogHeader>
