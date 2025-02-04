@@ -12,6 +12,32 @@ const getMenuItems = (studentId: string | null) => [
     title: "Gérer l'école",
     icon: School,
     path: "/manage-school",
+    subItems: [
+      {
+        title: "Profil",
+        path: "/school/profile",
+      },
+      {
+        title: "Calendrier",
+        path: "/school/calendar",
+      },
+      {
+        title: "Classes",
+        path: "/school/grades-and-classes",
+      },
+      {
+        title: "Matières",
+        path: "/school/subjects",
+      },
+      {
+        title: "Cycles et Trimestres",
+        path: "/school/cycles-and-terms",
+      },
+      {
+        title: "Présence",
+        path: "/school/attendance",
+      },
+    ],
   },
   {
     title: "Gérer l'élève",
@@ -73,7 +99,7 @@ const getMenuItems = (studentId: string | null) => [
   {
     title: "Programme d'études et évaluation",
     icon: GraduationCap,
-    path: "/curriculum",
+    path: "/manage-curriculum",
   },
   {
     title: "Portails parents",
@@ -87,8 +113,30 @@ export function TerangaSidebar() {
   const { selectedStudentId } = useStudent();
   const isStudentRoute = location.pathname.includes('/student/');
   const isManageStudentRoute = location.pathname === '/manage-student';
+  const isSchoolRoute = location.pathname.includes('/school/');
+  const isManageSchoolRoute = location.pathname === '/manage-school';
   
   const menuItems = getMenuItems(selectedStudentId);
+
+  const shouldShowSubItems = (item: any) => {
+    if (item.path === '/manage-student') {
+      return isStudentRoute || isManageStudentRoute;
+    }
+    if (item.path === '/manage-school') {
+      return isSchoolRoute || isManageSchoolRoute;
+    }
+    return false;
+  };
+
+  const isActiveMenuItem = (item: any) => {
+    if (item.path === '/manage-student') {
+      return isStudentRoute || isManageStudentRoute;
+    }
+    if (item.path === '/manage-school') {
+      return isSchoolRoute || isManageSchoolRoute;
+    }
+    return location.pathname === item.path;
+  };
 
   return (
     <div className="min-h-screen w-64 bg-terangablue-50 border-r border-terangablue-100 p-4 fixed left-0 top-0">
@@ -102,17 +150,15 @@ export function TerangaSidebar() {
               <Link
                 to={item.path}
                 className={`flex items-center gap-3 px-4 py-2 text-gray-700 rounded-lg hover:bg-terangablue-100 transition-colors ${
-                  (location.pathname === item.path || 
-                   (item.path === '/manage-student' && (isStudentRoute || isManageStudentRoute))) 
-                  ? 'bg-terangablue-100' : ''
+                  isActiveMenuItem(item) ? 'bg-terangablue-100' : ''
                 }`}
               >
                 <item.icon className="w-5 h-5" />
                 <span>{item.title}</span>
               </Link>
-              {item.subItems && (isManageStudentRoute || isStudentRoute) && (
+              {item.subItems && shouldShowSubItems(item) && (
                 <ul className="ml-8 mt-2 space-y-1">
-                  {item.subItems.map((subItem) => (
+                  {item.subItems.map((subItem: any) => (
                     <li key={subItem.path}>
                       <Link
                         to={subItem.path}
