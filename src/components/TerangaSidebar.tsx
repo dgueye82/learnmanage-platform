@@ -17,48 +17,48 @@ const getMenuItems = (studentId: string | null) => [
     title: "Gérer l'élève",
     icon: User,
     path: "/manage-student",
-    subItems: studentId ? [
+    subItems: [
       {
         title: "Profil",
-        path: `/student/${studentId}/profile`,
+        path: studentId ? `/student/${studentId}/profile` : "/manage-student",
       },
       {
         title: "Académique",
-        path: `/student/${studentId}/academic`,
+        path: studentId ? `/student/${studentId}/academic` : "/manage-student",
       },
       {
         title: "Progrès",
-        path: `/student/${studentId}/progress`,
+        path: studentId ? `/student/${studentId}/progress` : "/manage-student",
       },
       {
         title: "Présence",
-        path: `/student/${studentId}/attendance`,
+        path: studentId ? `/student/${studentId}/attendance` : "/manage-student",
       },
       {
         title: "Mérites",
-        path: `/student/${studentId}/merits`,
+        path: studentId ? `/student/${studentId}/merits` : "/manage-student",
       },
       {
         title: "Programme",
-        path: `/student/${studentId}/program`,
+        path: studentId ? `/student/${studentId}/program` : "/manage-student",
       },
       {
         title: "École",
-        path: `/student/${studentId}/school`,
+        path: studentId ? `/student/${studentId}/school` : "/manage-student",
       },
       {
         title: "Activités",
-        path: `/student/${studentId}/activities`,
+        path: studentId ? `/student/${studentId}/activities` : "/manage-student",
       },
       {
         title: "Mentor",
-        path: `/student/${studentId}/mentor`,
+        path: studentId ? `/student/${studentId}/mentor` : "/manage-student",
       },
       {
         title: "Détentions",
-        path: `/student/${studentId}/detentions`,
+        path: studentId ? `/student/${studentId}/detentions` : "/manage-student",
       },
-    ] : [],
+    ],
   },
   {
     title: "Gérer le personnel",
@@ -103,7 +103,7 @@ export function TerangaSidebar() {
                 to={item.path}
                 className={`flex items-center gap-3 px-4 py-2 text-gray-700 rounded-lg hover:bg-terangablue-100 transition-colors ${
                   (location.pathname === item.path || 
-                   (item.path === '/manage-student' && isStudentRoute)) 
+                   (item.path === '/manage-student' && (isStudentRoute || isManageStudentRoute))) 
                   ? 'bg-terangablue-100' : ''
                 }`}
               >
