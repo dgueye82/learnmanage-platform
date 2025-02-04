@@ -91,21 +91,77 @@ const getMenuItems = (studentId: string | null) => [
     title: "Gérer le personnel",
     icon: Users,
     path: "/manage-staff",
+    subItems: [
+      {
+        title: "Liste du personnel",
+        path: "/manage-staff",
+      },
+      {
+        title: "Ajouter un membre",
+        path: "/manage-staff/add",
+      },
+      {
+        title: "Planification",
+        path: "/manage-staff/planning",
+      },
+    ],
   },
   {
     title: "Formation en ligne",
     icon: BookOpen,
     path: "/online-training",
+    subItems: [
+      {
+        title: "Cours disponibles",
+        path: "/online-training",
+      },
+      {
+        title: "Mes formations",
+        path: "/online-training/my-courses",
+      },
+      {
+        title: "Certificats",
+        path: "/online-training/certificates",
+      },
+    ],
   },
   {
     title: "Programme d'études",
     icon: GraduationCap,
     path: "/manage-curriculum",
+    subItems: [
+      {
+        title: "Vue d'ensemble",
+        path: "/manage-curriculum",
+      },
+      {
+        title: "Programmes",
+        path: "/manage-curriculum/programs",
+      },
+      {
+        title: "Évaluations",
+        path: "/manage-curriculum/assessments",
+      },
+    ],
   },
   {
     title: "Portails parents",
     icon: Users,
     path: "/parent-portal",
+    subItems: [
+      {
+        title: "Accès parents",
+        path: "/parent-portal",
+      },
+      {
+        title: "Communications",
+        path: "/parent-portal/communications",
+      },
+      {
+        title: "Rendez-vous",
+        path: "/parent-portal/appointments",
+      },
+    ],
   },
 ];
 
@@ -126,7 +182,7 @@ export function TerangaSidebar() {
     if (item.path === '/manage-school') {
       return isSchoolRoute || isManageSchoolRoute;
     }
-    return false;
+    return location.pathname.startsWith(item.path);
   };
 
   const isActiveMenuItem = (item: any) => {
@@ -136,7 +192,7 @@ export function TerangaSidebar() {
     if (item.path === '/manage-school') {
       return isSchoolRoute || isManageSchoolRoute;
     }
-    return location.pathname === item.path;
+    return location.pathname.startsWith(item.path);
   };
 
   return (

@@ -39,10 +39,18 @@ export function Routes() {
       {/* Main Management Routes */}
       <Route path="/manage-student" element={<ManageStudent />} />
       <Route path="/manage-staff" element={<ManageStaff />} />
+      <Route path="/manage-staff/add" element={<ManageStaff />} />
+      <Route path="/manage-staff/planning" element={<ManageStaff />} />
       <Route path="/manage-school" element={<ManageSchool />} />
       <Route path="/manage-curriculum" element={<ManageCurriculum />} />
+      <Route path="/manage-curriculum/programs" element={<ManageCurriculum />} />
+      <Route path="/manage-curriculum/assessments" element={<ManageCurriculum />} />
       <Route path="/online-training" element={<OnlineTraining />} />
+      <Route path="/online-training/my-courses" element={<OnlineTraining />} />
+      <Route path="/online-training/certificates" element={<OnlineTraining />} />
       <Route path="/parent-portal" element={<ParentPortal />} />
+      <Route path="/parent-portal/communications" element={<ParentPortal />} />
+      <Route path="/parent-portal/appointments" element={<ParentPortal />} />
 
       {/* School Management Routes */}
       <Route path="/school/profile" element={<SchoolProfile />} />
