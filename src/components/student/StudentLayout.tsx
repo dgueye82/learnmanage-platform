@@ -8,12 +8,14 @@ interface StudentLayoutProps {
 export function StudentLayout({ children }: StudentLayoutProps) {
   return (
     <div className="min-h-screen bg-gray-50">
-      <StudentSidebar />
-      <div className="pl-64">
-        <StudentNavbar />
-        <main className="p-8">
-          {children}
-        </main>
+      <div className="flex">
+        <StudentSidebar />
+        <div className="flex-1">
+          <StudentNavbar />
+          <main className="p-8">
+            {children}
+          </main>
+        </div>
       </div>
     </div>
   );
