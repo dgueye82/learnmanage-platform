@@ -38,7 +38,7 @@ export function StudentNavbar() {
   const location = useLocation();
 
   return (
-    <div className="h-16 bg-white border-b border-gray-200 flex items-center px-4">
+    <div className="h-16 bg-white border-b border-gray-200 flex items-center px-4 sticky top-0 z-10">
       <nav className="flex space-x-4">
         {navItems.map((item) => (
           <Link

@@ -34,7 +34,7 @@ export function StudentSidebar() {
   const location = useLocation();
 
   return (
-    <div className="min-h-screen w-64 bg-terangablue-50 border-r border-terangablue-100 p-4 fixed left-0 top-0">
+    <div className="min-h-screen w-64 bg-terangablue-50 border-r border-terangablue-100 p-4 fixed left-0 top-0 overflow-y-auto">
       <div className="mb-8">
         <h1 className="text-2xl font-bold text-terangablue-600">Gestion Élève</h1>
       </div>

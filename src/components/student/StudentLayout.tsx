@@ -10,7 +10,7 @@ export function StudentLayout({ children }: StudentLayoutProps) {
     <div className="min-h-screen bg-gray-50">
       <div className="flex">
         <StudentSidebar />
-        <div className="flex-1">
+        <div className="flex-1 ml-64">
           <StudentNavbar />
           <main className="p-8">
             {children}
