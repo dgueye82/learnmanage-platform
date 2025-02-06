@@ -219,31 +219,70 @@ export type Database = {
       }
       students: {
         Row: {
+          address: string | null
+          birth_place: string | null
+          city: string | null
           class_id: string | null
+          country: string | null
           created_at: string | null
           date_of_birth: string | null
+          email: string | null
+          emergency_contact_email: string | null
+          emergency_contact_name: string | null
+          emergency_contact_phone: string | null
           first_name: string
+          gender: string | null
           id: string
           last_name: string
+          phone: string | null
+          postal_code: string | null
           school_id: string | null
+          state: string | null
+          status: string | null
         }
         Insert: {
+          address?: string | null
+          birth_place?: string | null
+          city?: string | null
           class_id?: string | null
+          country?: string | null
           created_at?: string | null
           date_of_birth?: string | null
+          email?: string | null
+          emergency_contact_email?: string | null
+          emergency_contact_name?: string | null
+          emergency_contact_phone?: string | null
           first_name: string
+          gender?: string | null
           id?: string
           last_name: string
+          phone?: string | null
+          postal_code?: string | null
           school_id?: string | null
+          state?: string | null
+          status?: string | null
         }
         Update: {
+          address?: string | null
+          birth_place?: string | null
+          city?: string | null
           class_id?: string | null
+          country?: string | null
           created_at?: string | null
           date_of_birth?: string | null
+          email?: string | null
+          emergency_contact_email?: string | null
+          emergency_contact_name?: string | null
+          emergency_contact_phone?: string | null
           first_name?: string
+          gender?: string | null
           id?: string
           last_name?: string
+          phone?: string | null
+          postal_code?: string | null
           school_id?: string | null
+          state?: string | null
+          status?: string | null
         }
         Relationships: [
           {
