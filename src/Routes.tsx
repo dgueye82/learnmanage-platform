@@ -1,4 +1,6 @@
-import { Routes as RouterRoutes, Route } from "react-router-dom";
+import { createBrowserRouter } from "react-router-dom";
+import Index from "./pages/Index";
+import Auth from "./pages/Auth";
 import Dashboard from "./pages/Dashboard";
 import ManageStudent from "./pages/ManageStudent";
 import ManageStaff from "./pages/ManageStaff";
@@ -6,18 +8,12 @@ import ManageSchool from "./pages/ManageSchool";
 import ManageCurriculum from "./pages/ManageCurriculum";
 import OnlineTraining from "./pages/OnlineTraining";
 import ParentPortal from "./pages/ParentPortal";
-import Auth from "./pages/Auth";
-import SchoolRegistration from "./pages/SchoolRegistration";
-
-// School Management Routes
 import SchoolProfile from "./pages/school/SchoolProfile";
 import SchoolCalendar from "./pages/school/SchoolCalendar";
 import GradesAndClasses from "./pages/school/GradesAndClasses";
 import SchoolSubjects from "./pages/school/SchoolSubjects";
 import CyclesAndTerms from "./pages/school/CyclesAndTerms";
 import Attendance from "./pages/school/Attendance";
-
-// Student Management Routes
 import StudentProfile from "./pages/student/StudentProfile";
 import StudentAcademic from "./pages/student/StudentAcademic";
 import StudentProgress from "./pages/student/StudentProgress";
@@ -29,48 +25,175 @@ import StudentActivities from "./pages/student/StudentActivities";
 import StudentMentor from "./pages/student/StudentMentor";
 import StudentDetentions from "./pages/student/StudentDetentions";
 
-export function Routes() {
-  return (
-    <RouterRoutes>
-      <Route path="/" element={<Dashboard />} />
-      <Route path="/auth" element={<Auth />} />
-      <Route path="/school-registration" element={<SchoolRegistration />} />
-      
-      {/* Main Management Routes */}
-      <Route path="/manage-student" element={<ManageStudent />} />
-      <Route path="/manage-staff" element={<ManageStaff />} />
-      <Route path="/manage-staff/add" element={<ManageStaff />} />
-      <Route path="/manage-staff/planning" element={<ManageStaff />} />
-      <Route path="/manage-school" element={<ManageSchool />} />
-      <Route path="/manage-curriculum" element={<ManageCurriculum />} />
-      <Route path="/manage-curriculum/programs" element={<ManageCurriculum />} />
-      <Route path="/manage-curriculum/assessments" element={<ManageCurriculum />} />
-      <Route path="/online-training" element={<OnlineTraining />} />
-      <Route path="/online-training/my-courses" element={<OnlineTraining />} />
-      <Route path="/online-training/certificates" element={<OnlineTraining />} />
-      <Route path="/parent-portal" element={<ParentPortal />} />
-      <Route path="/parent-portal/communications" element={<ParentPortal />} />
-      <Route path="/parent-portal/appointments" element={<ParentPortal />} />
+export const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <Index />,
+  },
+  {
+    path: "/auth",
+    element: <Auth />,
+  },
+  {
+    path: "/dashboard",
+    element: <Dashboard />,
+  },
+  {
+    path: "/manage-student",
+    element: <ManageStudent />,
+  },
+  {
+    path: "/student-info",
+    element: <StudentProfile />,
+  },
+  {
+    path: "/student-status",
+    element: <StudentAcademic />,
+  },
+  {
+    path: "/student-level",
+    element: <StudentProgress />,
+  },
+  {
+    path: "/student-coordinates",
+    element: <StudentSchool />,
+  },
+  {
+    path: "/student-emergency",
+    element: <StudentMentor />,
+  },
+  {
+    path: "/student-overview",
+    element: <StudentProfile />,
+  },
+  {
+    path: "/student-courses",
+    element: <StudentProgram />,
+  },
+  {
+    path: "/student-performance",
+    element: <StudentAcademic />,
+  },
+  {
+    path: "/student-attendance",
+    element: <StudentAttendance />,
+  },
+  {
+    path: "/manage-staff",
+    element: <ManageStaff />,
+  },
+  {
+    path: "/manage-staff/add",
+    element: <ManageStaff />,
+  },
+  {
+    path: "/manage-staff/planning",
+    element: <ManageStaff />,
+  },
+  {
+    path: "/manage-school",
+    element: <ManageSchool />,
+  },
+  {
+    path: "/school/profile",
+    element: <SchoolProfile />,
+  },
+  {
+    path: "/school/calendar",
+    element: <SchoolCalendar />,
+  },
+  {
+    path: "/school/grades-and-classes",
+    element: <GradesAndClasses />,
+  },
+  {
+    path: "/school/subjects",
+    element: <SchoolSubjects />,
+  },
+  {
+    path: "/school/cycles-and-terms",
+    element: <CyclesAndTerms />,
+  },
+  {
+    path: "/school/attendance",
+    element: <Attendance />,
+  },
+  {
+    path: "/manage-curriculum",
+    element: <ManageCurriculum />,
+  },
+  {
+    path: "/manage-curriculum/programs",
+    element: <ManageCurriculum />,
+  },
+  {
+    path: "/manage-curriculum/assessments",
+    element: <ManageCurriculum />,
+  },
+  {
+    path: "/online-training",
+    element: <OnlineTraining />,
+  },
+  {
+    path: "/online-training/my-courses",
+    element: <OnlineTraining />,
+  },
+  {
+    path: "/online-training/certificates",
+    element: <OnlineTraining />,
+  },
+  {
+    path: "/parent-portal",
+    element: <ParentPortal />,
+  },
+  {
+    path: "/parent-portal/communications",
+    element: <ParentPortal />,
+  },
+  {
+    path: "/parent-portal/appointments",
+    element: <ParentPortal />,
+  },
+  {
+    path: "/student/:studentId/profile",
+    element: <StudentProfile />,
+  },
+  {
+    path: "/student/:studentId/academic",
+    element: <StudentAcademic />,
+  },
+  {
+    path: "/student/:studentId/progress",
+    element: <StudentProgress />,
+  },
+  {
+    path: "/student/:studentId/attendance",
+    element: <StudentAttendance />,
+  },
+  {
+    path: "/student/:studentId/merits",
+    element: <StudentMerits />,
+  },
+  {
+    path: "/student/:studentId/program",
+    element: <StudentProgram />,
+  },
+  {
+    path: "/student/:studentId/school",
+    element: <StudentSchool />,
+  },
+  {
+    path: "/student/:studentId/activities",
+    element: <StudentActivities />,
+  },
+  {
+    path: "/student/:studentId/mentor",
+    element: <StudentMentor />,
+  },
+  {
+    path: "/student/:studentId/detentions",
+    element: <StudentDetentions />,
+  },
+]);
 
-      {/* School Management Routes */}
-      <Route path="/school/profile" element={<SchoolProfile />} />
-      <Route path="/school/calendar" element={<SchoolCalendar />} />
-      <Route path="/school/grades-and-classes" element={<GradesAndClasses />} />
-      <Route path="/school/subjects" element={<SchoolSubjects />} />
-      <Route path="/school/cycles-and-terms" element={<CyclesAndTerms />} />
-      <Route path="/school/attendance" element={<Attendance />} />
-
-      {/* Student Management Routes */}
-      <Route path="/student/:studentId/profile" element={<StudentProfile />} />
-      <Route path="/student/:studentId/academic" element={<StudentAcademic />} />
-      <Route path="/student/:studentId/progress" element={<StudentProgress />} />
-      <Route path="/student/:studentId/attendance" element={<StudentAttendance />} />
-      <Route path="/student/:studentId/merits" element={<StudentMerits />} />
-      <Route path="/student/:studentId/program" element={<StudentProgram />} />
-      <Route path="/student/:studentId/school" element={<StudentSchool />} />
-      <Route path="/student/:studentId/activities" element={<StudentActivities />} />
-      <Route path="/student/:studentId/mentor" element={<StudentMentor />} />
-      <Route path="/student/:studentId/detentions" element={<StudentDetentions />} />
-    </RouterRoutes>
-  );
-}
+export default router;

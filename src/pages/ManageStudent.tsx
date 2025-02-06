@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Layout } from "@/components/Layout";
+import { StudentLayout } from "@/components/student/StudentLayout";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { useToast } from "@/hooks/use-toast";
 import { supabase } from "@/lib/supabase";
@@ -56,8 +56,8 @@ const ManageStudent = () => {
   };
 
   return (
-    <Layout>
-      <div className="container py-8">
+    <StudentLayout>
+      <div className="container">
         <div className="flex justify-between items-center mb-6">
           <h1 className="text-3xl font-bold">Liste des Élèves</h1>
         </div>
@@ -96,7 +96,7 @@ const ManageStudent = () => {
           </CardContent>
         </Card>
       </div>
-    </Layout>
+    </StudentLayout>
   );
 };
 
