@@ -1,4 +1,4 @@
-import { Eye, BookOpen, ChartBar, Calendar } from "lucide-react";
+import { Eye, BookOpen, ChartBar, Calendar, DollarSign, MessageSquare, CalendarDays, FileText } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
 import { cn } from "@/lib/utils";
 
@@ -17,20 +17,31 @@ const navItems = [
     title: "Performance",
     icon: ChartBar,
     path: "/student-performance",
-    description: "Carnets de notes, bulletins de notes, résultats",
   },
   {
     title: "Présence",
     icon: Calendar,
     path: "/student-attendance",
-    statuses: [
-      { label: "Présent", color: "text-green-500" },
-      { label: "Absence injustifiée", color: "text-red-500" },
-      { label: "Absence justifiée", color: "text-red-500" },
-      { label: "Expulsion", color: "text-red-500" },
-      { label: "En retard", color: "text-orange-500" },
-      { label: "Indéterminé", color: "text-gray-500" },
-    ],
+  },
+  {
+    title: "Financier",
+    icon: DollarSign,
+    path: "/student-financial",
+  },
+  {
+    title: "Remarques",
+    icon: MessageSquare,
+    path: "/student-remarks",
+  },
+  {
+    title: "Calendrier",
+    icon: CalendarDays,
+    path: "/student-calendar",
+  },
+  {
+    title: "Fichier",
+    icon: FileText,
+    path: "/student-files",
   },
 ];
 
@@ -38,18 +49,27 @@ export function StudentNavbar() {
   const location = useLocation();
 
   return (
-    <div className="h-16 bg-white border-b border-gray-200 flex items-center px-4 sticky top-0 z-10">
-      <nav className="flex space-x-4">
+    <div className="bg-white border-b border-gray-200 sticky top-0 z-10">
+      <div className="h-16 flex items-center px-4 border-b border-gray-200">
+        <div className="flex items-center space-x-2">
+          <span className="text-sm text-gray-500">Étudiants</span>
+          <span className="text-sm text-gray-500">→</span>
+          <span className="text-sm font-medium">Mamadou Ndiaye</span>
+        </div>
+      </div>
+      <nav className="flex space-x-1 px-4 overflow-x-auto">
         {navItems.map((item) => (
           <Link
             key={item.path}
             to={item.path}
             className={cn(
-              "flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 transition-colors",
-              location.pathname === item.path && "bg-gray-100"
+              "flex items-center gap-2 px-4 py-3 text-sm font-medium border-b-2 hover:border-gray-300 transition-colors",
+              location.pathname === item.path 
+                ? "border-blue-600 text-blue-600" 
+                : "border-transparent text-gray-500 hover:text-gray-700"
             )}
           >
-            <item.icon className="w-5 h-5" />
+            <item.icon className="w-4 h-4" />
             <span>{item.title}</span>
           </Link>
         ))}

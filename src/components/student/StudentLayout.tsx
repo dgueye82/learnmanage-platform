@@ -12,7 +12,7 @@ export function StudentLayout({ children }: StudentLayoutProps) {
         <StudentSidebar />
         <div className="flex-1 ml-64">
           <StudentNavbar />
-          <main className="p-8">
+          <main className="p-4">
             {children}
           </main>
         </div>
