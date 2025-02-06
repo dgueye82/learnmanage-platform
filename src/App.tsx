@@ -3,21 +3,20 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { Toaster } from "@/components/ui/toaster";
 import { SchoolProvider } from "./contexts/SchoolContext";
 import { StudentProvider } from "./contexts/StudentContext";
-import { Routes } from "./Routes";
+import { RouterProvider } from "react-router-dom";
+import { router } from "./Routes";
 
 const queryClient = new QueryClient();
 
 function App() {
   return (
     <QueryClientProvider client={queryClient}>
-      <Router>
-        <SchoolProvider>
-          <StudentProvider>
-            <Routes />
-            <Toaster />
-          </StudentProvider>
-        </SchoolProvider>
-      </Router>
+      <SchoolProvider>
+        <StudentProvider>
+          <RouterProvider router={router} />
+          <Toaster />
+        </StudentProvider>
+      </SchoolProvider>
     </QueryClientProvider>
   );
 }
