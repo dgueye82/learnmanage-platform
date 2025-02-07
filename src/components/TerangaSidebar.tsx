@@ -1,3 +1,4 @@
+
 import { Home, School, User, Users, BookOpen, GraduationCap, ChevronDown } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
 import { useStudent } from "@/contexts/StudentContext";
@@ -24,7 +25,7 @@ const getMenuItems = (studentId: string | null) => [
       },
       {
         title: "Classes",
-        path: "/school/grades-and-classes",
+        path: "/school/grades-classes",
       },
       {
         title: "Matières",
@@ -32,7 +33,7 @@ const getMenuItems = (studentId: string | null) => [
       },
       {
         title: "Cycles et Trimestres",
-        path: "/school/cycles-and-terms",
+        path: "/school/cycles-terms",
       },
       {
         title: "Présence",
