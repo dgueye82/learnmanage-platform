@@ -1,53 +1,54 @@
 
 import { Eye, BookOpen, ChartBar, Calendar, DollarSign, MessageSquare, CalendarDays, FileText } from "lucide-react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useParams } from "react-router-dom";
 import { cn } from "@/lib/utils";
-
-const navItems = [
-  {
-    title: "Aperçu",
-    icon: Eye,
-    path: "/student-overview",
-  },
-  {
-    title: "Cours",
-    icon: BookOpen,
-    path: "/student-courses",
-  },
-  {
-    title: "Performance",
-    icon: ChartBar,
-    path: "/student-performance",
-  },
-  {
-    title: "Présence",
-    icon: Calendar,
-    path: "/student-attendance",
-  },
-  {
-    title: "Financier",
-    icon: DollarSign,
-    path: "/student-financial",
-  },
-  {
-    title: "Remarques",
-    icon: MessageSquare,
-    path: "/student-remarks",
-  },
-  {
-    title: "Calendrier",
-    icon: CalendarDays,
-    path: "/student-calendar",
-  },
-  {
-    title: "Fichier",
-    icon: FileText,
-    path: "/student-files",
-  },
-];
 
 export function StudentNavbar() {
   const location = useLocation();
+  const { studentId } = useParams();
+
+  const navItems = [
+    {
+      title: "Aperçu",
+      icon: Eye,
+      path: `/student/${studentId}/overview`,
+    },
+    {
+      title: "Cours",
+      icon: BookOpen,
+      path: `/student/${studentId}/courses`,
+    },
+    {
+      title: "Performance",
+      icon: ChartBar,
+      path: `/student/${studentId}/performance`,
+    },
+    {
+      title: "Présence",
+      icon: Calendar,
+      path: `/student/${studentId}/attendance`,
+    },
+    {
+      title: "Financier",
+      icon: DollarSign,
+      path: `/student/${studentId}/financial`,
+    },
+    {
+      title: "Remarques",
+      icon: MessageSquare,
+      path: `/student/${studentId}/remarks`,
+    },
+    {
+      title: "Calendrier",
+      icon: CalendarDays,
+      path: `/student/${studentId}/calendar`,
+    },
+    {
+      title: "Fichier",
+      icon: FileText,
+      path: `/student/${studentId}/files`,
+    },
+  ];
 
   return (
     <div className="bg-white border-b border-gray-200 sticky top-0 z-10">

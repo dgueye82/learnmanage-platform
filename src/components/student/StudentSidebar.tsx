@@ -1,37 +1,39 @@
-import { User, UserCheck, ArrowUp, MapPin, Phone } from "lucide-react";
-import { Link, useLocation } from "react-router-dom";
-import { cn } from "@/lib/utils";
 
-const studentMenuItems = [
-  {
-    title: "Renseignements personnels",
-    icon: User,
-    path: "/student-info",
-  },
-  {
-    title: "Étudiant",
-    icon: UserCheck,
-    path: "/student-status",
-  },
-  {
-    title: "Niveau",
-    icon: ArrowUp,
-    path: "/student-level",
-  },
-  {
-    title: "Coordonnées",
-    icon: MapPin,
-    path: "/student-coordinates",
-  },
-  {
-    title: "Contact d'urgence",
-    icon: Phone,
-    path: "/student-emergency",
-  },
-];
+import { User, UserCheck, ArrowUp, MapPin, Phone } from "lucide-react";
+import { Link, useLocation, useParams } from "react-router-dom";
+import { cn } from "@/lib/utils";
 
 export function StudentSidebar() {
   const location = useLocation();
+  const { studentId } = useParams();
+
+  const studentMenuItems = [
+    {
+      title: "Renseignements personnels",
+      icon: User,
+      path: `/student/${studentId}/personal-info`,
+    },
+    {
+      title: "Étudiant",
+      icon: UserCheck,
+      path: `/student/${studentId}/status`,
+    },
+    {
+      title: "Niveau",
+      icon: ArrowUp,
+      path: `/student/${studentId}/level`,
+    },
+    {
+      title: "Coordonnées",
+      icon: MapPin,
+      path: `/student/${studentId}/contact`,
+    },
+    {
+      title: "Contact d'urgence",
+      icon: Phone,
+      path: `/student/${studentId}/emergency`,
+    },
+  ];
 
   return (
     <div className="min-h-screen w-64 bg-gray-50 border-r border-gray-200 p-4 fixed left-0 top-0 overflow-y-auto">
